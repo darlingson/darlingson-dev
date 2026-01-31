@@ -1,11 +1,92 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
+import Hero from "../components/Hero.astro";
+import TerminalCard from "../components/TerminalCard.astro";
+import ProjectCard from "../components/ProjectCard.astro";
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const projects = [
+	{
+		title: "Ndalama Goals",
+		description:
+			"Personal finance management tool designed for the Malawian context. Features automated goal tracking, expense categorization, and multi-currency support.",
+		tech: "Jetpack compose / Kotlin",
+		status: "PRODUCTION",
+		tag: "FINTECH",
+		fileName: "ndalama_goals.sh",
+	},
+	{
+		title: "Mpira Metrics",
+		description:
+			"A deep-dive analytics platform for Malawian football. Visualizing player performance statistics and match heatmaps using advanced data scraping.",
+		tech: "Typescript / Neon Database / PYTHON / PLOTLY",
+		status: "BETA_RELEASE",
+		tag: "DATA_VIZ",
+		fileName: "mpira_metrics.py",
+	},
+];
 ---
 
-<Layout>
-	<Welcome />
+<Layout title="Darlingson Makuwila | Backend Engineer">
+	<Hero />
+
+	<TerminalCard>
+		<div class="space-y-1">
+			<h3 class="text-terminal-purple text-xs mb-4 uppercase font-bold">
+				# Status
+			</h3>
+			<p class="text-sm opacity-70">
+				ROLE: <span class="text-white">Software Engineer</span>
+			</p>
+			<p class="text-sm opacity-70">
+				LOC: <span class="text-white">Blantyre, MW</span>
+			</p>
+			<p class="text-sm opacity-70">
+				EXP: <span class="text-white">3+ Years</span>
+			</p>
+			<p class="text-sm text-terminal-green mt-2 font-bold">
+				AVAILABLE: TRUE
+			</p>
+		</div>
+
+		<div>
+			<h3 class="text-terminal-purple text-xs mb-4 uppercase font-bold">
+				# Stack
+			</h3>
+			<div class="flex flex-wrap gap-2">
+				{
+					["TYPESCRIPT", "C#/.NET", "KOTLIN", "PYTHON", "DOCKER"].map(
+						(tech) => (
+							<span class="bg-white/5 border border-white/10 px-2 py-1 text-[10px] hover:bg-terminal-purple/20 transition-colors">
+								{tech}
+							</span>
+						),
+					)
+				}
+			</div>
+		</div>
+
+		<div>
+			<h3 class="text-terminal-purple text-xs mb-4 uppercase font-bold">
+				# Focus
+			</h3>
+			<p class="italic text-sm opacity-80 leading-relaxed">
+				"Bridging complex code with human utility."
+			</p>
+		</div>
+	</TerminalCard>
+
+	<section id="projects" class="max-w-4xl mx-auto mt-24">
+		<div class="flex items-center gap-4 mb-12">
+			<h2 class="text-2xl font-bold">
+				./projects <span class="opacity-50 text-xl font-normal"
+					>--active</span
+				>
+			</h2>
+			<div class="h-[1px] flex-grow bg-white/10"></div>
+		</div>
+
+		<div class="grid md:grid-cols-2 gap-6">
+			{projects.map((project) => <ProjectCard {...project} />)}
+		</div>
+	</section>
 </Layout>

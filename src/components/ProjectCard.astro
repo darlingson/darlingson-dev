@@ -1,0 +1,48 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  tech: string;
+  status: string;
+  tag: string;
+  fileName: string;
+}
+
+const { title, description, tech, status, tag, fileName } = Astro.props;
+---
+
+<div class="bg-terminal-window border border-white/10 rounded-lg overflow-hidden group hover:border-terminal-purple/50 transition-all">
+  <div class="bg-white/5 px-4 py-2 flex justify-between items-center border-b border-white/5">
+    <div class="flex gap-1.5">
+      <div class="w-2 h-2 rounded-full bg-red-500/50"></div>
+      <div class="w-2 h-2 rounded-full bg-yellow-500/50"></div>
+      <div class="w-2 h-2 rounded-full bg-green-500/50"></div>
+    </div>
+    <span class="text-[9px] opacity-40 uppercase tracking-tighter">{fileName}</span>
+    <div class="w-4"></div>
+  </div>
+
+  <div class="p-5">
+    <div class="flex justify-between items-start mb-4">
+      <h3 class="text-xl font-bold">{title}</h3>
+      <span class="text-[10px] bg-terminal-purple/20 text-terminal-purple px-2 py-0.5 rounded border border-terminal-purple/30 uppercase">
+        {tag}
+      </span>
+    </div>
+
+    <p class="text-sm text-terminal-gray mb-6 leading-relaxed">
+      {description}
+    </p>
+
+    <div class="flex justify-between items-center text-[10px] font-bold">
+      <div class="flex flex-col">
+        <span class="opacity-30 uppercase">Build:</span>
+        <span class="text-white uppercase">{tech}</span>
+      </div>
+      <div class="flex flex-col text-right">
+        <span class="opacity-30 uppercase">Status:</span>
+        <span class={status === 'PRODUCTION' ? 'text-terminal-green' : 'text-yellow-500'}>{status}</span>
+      </div>
+    </div>
+  </div>
+</div>
