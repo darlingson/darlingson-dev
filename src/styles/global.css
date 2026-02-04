@@ -2,19 +2,37 @@
 
 @theme {
   /* Custom Colors */
-  --color-terminal-bg: #0F0F0F;
-  --color-terminal-window: #1A1A1A;
-  --color-terminal-green: #4AF626;
-  --color-terminal-purple: #A855F7;
+  --color-terminal-bg: #0A0A0A;
+  --color-terminal-window: #121212;
+  --color-terminal-purple: #7C3AED;
+  --color-terminal-green: #22C55E;
   --color-terminal-gray: #9CA3AF;
 
   /* Custom Fonts */
   --font-mono: "Cascadia Code", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+
+  /* Reference the keyframes by name here */
+  --animation-terminal-blink: terminal-blink 1s step-end infinite;
+}
+.custom-blink {
+  animation: terminal-blink 1s step-end infinite;
+}
+@keyframes terminal-blink {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
 }
 
-/* Optional: Ensure the background stays dark globally */
 @layer base {
-  html, body {
+
+  html,
+  body {
     @apply bg-terminal-bg text-white;
     font-family: var(--font-mono);
   }

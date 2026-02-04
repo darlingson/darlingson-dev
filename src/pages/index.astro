@@ -3,7 +3,7 @@ import Layout from "../layouts/Layout.astro";
 import Hero from "../components/Hero.astro";
 import TerminalCard from "../components/TerminalCard.astro";
 import ProjectCard from "../components/ProjectCard.astro";
-
+import ContactCard from "../components/ContactCard.astro";
 const projects = [
 	{
 		title: "Ndalama Goals",
@@ -89,4 +89,6 @@ const projects = [
 			{projects.map((project) => <ProjectCard {...project} />)}
 		</div>
 	</section>
+
+	<ContactCard />
 </Layout>
