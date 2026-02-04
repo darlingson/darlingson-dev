@@ -1,0 +1,192 @@
+---
+import Layout from "../layouts/Layout.astro";
+import ProjectCard from "../components/ProjectViewCard.astro";
+
+const projects = [
+    {
+        title: "Ndalama Goals",
+        fileName: "PROJECT_V1.0.4.SH",
+        tags: ["FINTECH", "REACT", "SUPABASE"],
+        languages: ["Typescript", "SQL"],
+        description:
+            "A local-first financial management engine designed specifically for Malawian monetary ecosystems. Orchestrates automated goal tracking and granular expense auditing.",
+        branch: "feature/auto-sync",
+        stability: "PRODUCTION",
+        metaLabel: "COVERAGE",
+        metaValue: "94.2%",
+        action: "EXECUTE",
+    },
+    {
+        title: "Mpira Metrics",
+        fileName: "ANALYTICS_ENGINE.PY",
+        tags: ["DATA_VIZ", "SCRAPING"],
+        languages: ["Python", "Plotly"],
+        description:
+            "High-fidelity sports analytics platform visualizing the Super League of Malawi. Utilizes complex data scrapers to aggregate player heatmaps.",
+        branch: "master",
+        stability: "BETA_V2",
+        metaLabel: "LATENCY",
+        metaValue: "240ms",
+        action: "RUN_DEBUG",
+    },
+];
+
+const allTech = [
+    ...new Set(projects.flatMap((p) => [...p.tags, ...p.languages])),
+].sort();
+---
+
+---
+
+<Layout title="Darlingson Makuwila | Software Engineer">
+    <main class="max-w-6xl mx-auto p-6 md:p-12 space-y-10">
+        <header class="space-y-4">
+            <div class="flex items-center gap-3 text-lg md:text-xl font-mono">
+                <span class="text-terminal-green font-bold"
+                    >darlingson@malawi</span
+                >
+                <span class="opacity-40">:</span>
+                <span class="text-terminal-purple">~/engineering/projects</span>
+                <span class="opacity-40">$</span>
+                <span class="flex items-center gap-2">
+                    ls -la ./projects --detailed
+                    <span class="w-2.5 h-5 bg-terminal-purple custom-blink"
+                    ></span>
+                </span>
+            </div>
+
+            <div
+                class="bg-terminal-window/50 border border-white/5 p-4 rounded text-[10px] font-mono flex gap-6 opacity-60 uppercase"
+            >
+                <span>Total 4 active objects</span>
+                <span>-rw-r--r--</span>
+                <span>drwxr-xr-x</span>
+                <span class="text-terminal-green font-bold">system: stable</span
+                >
+            </div>
+        </header>
+
+        <div class="grid md:grid-cols-2 gap-8" id="project-grid">
+            {
+                projects.map((project) => (
+                    <div
+                        class="project-wrapper transition-all duration-300"
+                        data-tech={JSON.stringify([
+                            ...project.tags,
+                            ...project.languages,
+                        ])}
+                    >
+                        <ProjectCard {...project} />
+                    </div>
+                ))
+            }
+        </div>
+
+        <footer
+            class="bg-terminal-window border border-white/5 rounded-lg p-8 grid md:grid-cols-3 gap-12 font-mono"
+        >
+            <div class="space-y-4">
+                <div
+                    class="flex items-center gap-2 text-[10px] text-terminal-purple font-bold uppercase"
+                >
+                    <span
+                        class="w-1.5 h-1.5 rounded-full bg-terminal-purple animate-pulse"
+                    ></span>
+                    # Local_Time
+                </div>
+                <div>
+                    <div class="text-3xl font-bold">Lilongwe, MW</div>
+                    <div class="text-[10px] opacity-40 mt-1">
+                        UTC +02:00 / Standard Time
+                    </div>
+                </div>
+            </div>
+
+            <div class="space-y-4">
+                <div
+                    class="text-[10px] text-terminal-purple font-bold uppercase"
+                >
+                    # Current_Mission
+                </div>
+                <p class="text-xs leading-relaxed opacity-70">
+                    Optimizing backend architectures for distributed systems and
+                    fine-tuning ML models for regional data patterns.
+                </p>
+            </div>
+
+            <div class="space-y-4">
+                <div
+                    class="text-[10px] text-terminal-purple font-bold uppercase"
+                >
+                    # Stack_Audit
+                </div>
+                <div class="flex flex-wrap gap-2">
+                    <button
+                        class="filter-btn active-filter text-[9px] px-2 py-1 border border-terminal-purple bg-terminal-purple/20 rounded uppercase cursor-pointer"
+                        data-filter="all"
+                    >
+                        All_Systems
+                    </button>
+                    {
+                        allTech.map((tech) => (
+                            <button
+                                class="filter-btn text-[9px] px-2 py-1 border border-white/10 bg-white/5 opacity-60 rounded uppercase hover:border-terminal-purple hover:opacity-100 transition-all cursor-pointer"
+                                data-filter={tech}
+                            >
+                                {tech}
+                            </button>
+                        ))
+                    }
+                </div>
+            </div>
+        </footer>
+    </main>
+</Layout>
+<script>
+    // Filter Logic
+    const buttons = document.querySelectorAll(".filter-btn");
+    const projectWrappers = document.querySelectorAll(".project-wrapper");
+
+    buttons.forEach((btn) => {
+        btn.addEventListener("click", () => {
+            const filter = btn.getAttribute("data-filter");
+
+            // Update button styles
+            buttons.forEach((b) => {
+                b.classList.remove(
+                    "border-terminal-purple",
+                    "bg-terminal-purple/20",
+                    "opacity-100",
+                );
+                b.classList.add("border-white/10", "bg-white/5", "opacity-60");
+            });
+
+            btn.classList.add(
+                "border-terminal-purple",
+                "bg-terminal-purple/20",
+                "opacity-100",
+            );
+            btn.classList.remove("border-white/10", "bg-white/5", "opacity-60");
+
+            // Filter display
+            projectWrappers.forEach((wrapper) => {
+                const techStack = JSON.parse(
+                    wrapper.getAttribute("data-tech") || "[]",
+                );
+                if (filter === "all" || techStack.includes(filter)) {
+                    (wrapper as HTMLElement).style.display = "block";
+                    setTimeout(
+                        () => ((wrapper as HTMLElement).style.opacity = "1"),
+                        10,
+                    );
+                } else {
+                    (wrapper as HTMLElement).style.opacity = "0";
+                    setTimeout(
+                        () => ((wrapper as HTMLElement).style.display = "none"),
+                        300,
+                    );
+                }
+            });
+        });
+    });
+</script>
