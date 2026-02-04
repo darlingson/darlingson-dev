@@ -1,0 +1,98 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const categories = [
+  {
+    name: "/AI_ML",
+    count: "8 FILES",
+    icon: "🧠",
+    items: [
+      { title: "001_TRANSFORMER_ARCH.md", desc: "Breaking down multi-head attention mechanisms and positional encoding implementation." },
+      { title: "002_RL_Q_LEARNING.py", desc: "Implementing Q-learning tables for simple grid-world optimization problems." }
+    ]
+  },
+  {
+    name: "/Data_Engineering",
+    count: "12 FILES",
+    icon: "🗄️",
+    items: [
+      { title: "KAFKA_PIPELINES.conf", desc: "Distributed messaging systems and stream processing architectures for real-time telemetry." },
+      { title: "ETL_WORKFLOWS.sql", desc: "Optimization strategies for large-scale data ingestion and transformation in PostgreSQL." }
+    ]
+  }
+];
+
+const languages = [
+  { name: "KOTLIN/", files: ["coroutines.log", "generics.notes"] },
+  { name: "DOTNET/", files: ["blazor_wasm.md", "ef_core_perf.txt"] },
+  { name: "PYTHON/", files: ["fastapi_async.py", "poetry_env.log"] }
+];
+---
+
+<Layout title="Darlingson Makuwila | The Knowledge Index Hub">
+  <main class="min-h-screen bg-[#0a0a0a] text-[#a0a0a0] font-mono p-8 md:p-16">
+    
+    <header class="mb-12">
+      <div class="text-sm mb-4">
+        <span class="text-green-500">guest@brain</span> : 
+        <span class="text-purple-500">/dev/mem</span> $ 
+        <span class="text-white">grep -r "learnings" /dev/brain</span>
+      </div>
+      <h1 class="text-4xl md:text-5xl font-bold text-white mb-2">
+        The Knowledge Index <span class="text-purple-600">Hub</span>
+      </h1>
+      <p class="text-gray-500 max-w-2xl">
+        Personal documentation and technical deep-dives by Darlingson Makuwila. 
+        Tracing the path from software engineering to artificial intelligence.
+      </p>
+    </header>
+
+    <section class="space-y-16">
+      {categories.map(cat => (
+        <div>
+          <div class="flex items-center justify-between border-b border-gray-800 pb-2 mb-6">
+            <h2 class="text-xl font-bold text-white flex items-center gap-3">
+              <span class="text-purple-500">{cat.icon}</span> {cat.name}
+            </h2>
+            <span class="text-xs text-gray-600 tracking-widest">{cat.count}</span>
+          </div>
+          
+          <div class="grid md:grid-cols-2 gap-4">
+            {cat.items.map(item => (
+              <div class="group border border-gray-900 bg-[#111] p-6 rounded-sm hover:border-purple-900 transition-colors cursor-pointer relative">
+                <span class="absolute top-4 right-4 text-gray-700 group-hover:text-purple-500">↗</span>
+                <h3 class="text-purple-400 font-bold mb-3">{item.title}</h3>
+                <p class="text-sm leading-relaxed text-gray-500">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+
+      <div>
+        <div class="flex items-center justify-between border-b border-gray-800 pb-2 mb-6">
+          <h2 class="text-xl font-bold text-white flex items-center gap-3">
+            <span class="text-purple-500">{"<>"}</span> /Languages
+          </h2>
+          <span class="text-xs text-gray-600 tracking-widest">24 FILES</span>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {languages.map(lang => (
+            <div class="border border-gray-900 bg-[#111] p-6 rounded-sm">
+              <h3 class="text-xs text-gray-600 mb-4 tracking-tighter">{lang.name}</h3>
+              <ul class="space-y-2">
+                {lang.files.map(file => (
+                  <li class="flex items-center gap-2 text-sm hover:text-white cursor-pointer">
+                    <span class="text-gray-700">•</span> {file}
+                  </li>
+                ))}
+                <li class="text-gray-700 text-xs mt-2 italic">... more</li>
+              </ul>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>
