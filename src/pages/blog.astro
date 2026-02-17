@@ -1,32 +1,34 @@
 ---
 import Layout from "../layouts/Layout.astro";
 
-const categories = [
-  {
-    name: "/AI_ML",
-    count: "8 FILES",
-    icon: "🧠",
-    items: [
-      { title: "001_TRANSFORMER_ARCH.md", desc: "Breaking down multi-head attention mechanisms and positional encoding implementation." },
-      { title: "002_RL_Q_LEARNING.py", desc: "Implementing Q-learning tables for simple grid-world optimization problems." }
-    ]
-  },
-  {
-    name: "/Data_Engineering",
-    count: "12 FILES",
-    icon: "🗄️",
-    items: [
-      { title: "KAFKA_PIPELINES.conf", desc: "Distributed messaging systems and stream processing architectures for real-time telemetry." },
-      { title: "ETL_WORKFLOWS.sql", desc: "Optimization strategies for large-scale data ingestion and transformation in PostgreSQL." }
-    ]
-  }
+// 1. YOUR FLAT DATA ARRAY
+// Just add new items here. The logic below handles the rest.
+const rawData = [
+  { title: "001_TRANSFORMER_ARCH.md", category: "/AI_ML", desc: "Breaking down multi-head attention mechanisms and positional encoding implementation.", icon: "🧠" },
+  { title: "002_RL_Q_LEARNING.py", category: "/AI_ML", desc: "Implementing Q-learning tables for simple grid-world optimization problems.", icon: "🧠" },
+  
+  { title: "KAFKA_PIPELINES.conf", category: "/Data_Engineering", desc: "Distributed messaging systems and stream processing architectures for real-time telemetry.", icon: "🗄️" },
+  { title: "ETL_WORKFLOWS.sql", category: "/Data_Engineering", desc: "Optimization strategies for large-scale data ingestion and transformation in PostgreSQL.", icon: "🗄️" },
+  
+  // For Languages, the 'title' acts as the filename, and 'desc' isn't used in the small list view
+  { title: "coroutines.log", category: "/Languages", subCategory: "KOTLIN/", icon: "<>" },
+  { title: "generics.notes", category: "/Languages", subCategory: "KOTLIN/", icon: "<>" },
+  { title: "blazor_wasm.md", category: "/Languages", subCategory: "DOTNET/", icon: "<>" },
+  { title: "ef_core_perf.txt", category: "/Languages", subCategory: "DOTNET/", icon: "<>" },
+  { title: "fastapi_async.py", category: "/Languages", subCategory: "PYTHON/", icon: "<>" },
+  { title: "poetry_env.log", category: "/Languages", subCategory: "PYTHON/", icon: "<>" },
 ];
 
-const languages = [
-  { name: "KOTLIN/", files: ["coroutines.log", "generics.notes"] },
-  { name: "DOTNET/", files: ["blazor_wasm.md", "ef_core_perf.txt"] },
-  { name: "PYTHON/", files: ["fastapi_async.py", "poetry_env.log"] }
-];
+// 2. AUTOMATIC GROUPING LOGIC
+const categories = [...new Set(rawData.map(item => item.category))].map(catName => {
+  const items = rawData.filter(i => i.category === catName);
+  return {
+    name: catName,
+    icon: items[0]?.icon || "📁",
+    count: `${items.length} FILES`,
+    items: items
+  };
+});
 ---
 
 <Layout title="Darlingson Makuwila | The Knowledge Index Hub">
@@ -41,7 +43,7 @@ const languages = [
       <h1 class="text-4xl md:text-5xl font-bold text-white mb-2">
         The Knowledge Index <span class="text-purple-600">Hub</span>
       </h1>
-      <p class="text-gray-500 max-w-2xl">
+      <p class="text-gray-500 max-w-2xl text-sm">
         Personal documentation and technical deep-dives by Darlingson Makuwila. 
         Tracing the path from software engineering to artificial intelligence.
       </p>
@@ -52,47 +54,46 @@ const languages = [
         <div>
           <div class="flex items-center justify-between border-b border-gray-800 pb-2 mb-6">
             <h2 class="text-xl font-bold text-white flex items-center gap-3">
-              <span class="text-purple-500">{cat.icon}</span> {cat.name}
+              <span class="text-purple-500">{cat.name === "/Languages" ? "<>" : cat.icon}</span> {cat.name}
             </h2>
-            <span class="text-xs text-gray-600 tracking-widest">{cat.count}</span>
+            <span class="text-[10px] text-gray-600 tracking-[0.2em]">{cat.count}</span>
           </div>
           
-          <div class="grid md:grid-cols-2 gap-4">
-            {cat.items.map(item => (
-              <div class="group border border-gray-900 bg-[#111] p-6 rounded-sm hover:border-purple-900 transition-colors cursor-pointer relative">
-                <span class="absolute top-4 right-4 text-gray-700 group-hover:text-purple-500">↗</span>
-                <h3 class="text-purple-400 font-bold mb-3">{item.title}</h3>
-                <p class="text-sm leading-relaxed text-gray-500">{item.desc}</p>
-              </div>
-            ))}
-          </div>
+          {cat.name === "/Languages" ? (
+            /* SPECIAL LAYOUT FOR LANGUAGES */
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+              {[...new Set(cat.items.map(i => i.subCategory))].map(sub => (
+                <div class="border border-gray-900 bg-[#0c0c0c] p-6 rounded-sm">
+                  <h3 class="text-[10px] text-gray-600 mb-4 tracking-tighter uppercase">{sub}</h3>
+                  <ul class="space-y-2">
+                    {cat.items.filter(i => i.subCategory === sub).map(file => (
+                      <li class="flex items-center gap-2 text-sm hover:text-white cursor-pointer transition-colors">
+                        <span class="text-gray-800">•</span> {file.title}
+                      </li>
+                    ))}
+                    <li class="text-gray-800 text-[10px] mt-2 italic">... more</li>
+                  </ul>
+                </div>
+              ))}
+            </div>
+          ) : (
+            /* STANDARD LAYOUT FOR AI/ML & DATA ENGINEERING */
+            <div class="grid md:grid-cols-2 gap-4">
+              {cat.items.map(item => (
+                <div class="group border border-gray-900 bg-[#0c0c0c] p-6 rounded-sm hover:border-purple-900/50 transition-all cursor-pointer relative">
+                  <span class="absolute top-4 right-4 text-gray-800 group-hover:text-purple-500 transition-colors text-xs">↗</span>
+                  <h3 class="text-purple-500/90 font-bold mb-3 text-sm tracking-tight group-hover:text-purple-400">
+                    {item.title}
+                  </h3>
+                  <p class="text-xs leading-relaxed text-gray-500 group-hover:text-gray-400">
+                    {item.desc}
+                  </p>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       ))}
-
-      <div>
-        <div class="flex items-center justify-between border-b border-gray-800 pb-2 mb-6">
-          <h2 class="text-xl font-bold text-white flex items-center gap-3">
-            <span class="text-purple-500">{"<>"}</span> /Languages
-          </h2>
-          <span class="text-xs text-gray-600 tracking-widest">24 FILES</span>
-        </div>
-        
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-          {languages.map(lang => (
-            <div class="border border-gray-900 bg-[#111] p-6 rounded-sm">
-              <h3 class="text-xs text-gray-600 mb-4 tracking-tighter">{lang.name}</h3>
-              <ul class="space-y-2">
-                {lang.files.map(file => (
-                  <li class="flex items-center gap-2 text-sm hover:text-white cursor-pointer">
-                    <span class="text-gray-700">•</span> {file}
-                  </li>
-                ))}
-                <li class="text-gray-700 text-xs mt-2 italic">... more</li>
-              </ul>
-            </div>
-          ))}
-        </div>
-      </div>
     </section>
   </main>
 </Layout>
