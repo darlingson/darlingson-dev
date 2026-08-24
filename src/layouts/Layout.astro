@@ -4,105 +4,66 @@ import Analytics from "@vercel/analytics/astro";
 interface Props {
     title: string;
 }
-
 const { title } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en" class="bg-terminal-bg text-white font-mono">
+<html lang="en" class="light">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
         <title>{title}</title>
         <Analytics />
     </head>
-    <body class="min-h-screen flex flex-col overflow-x-hidden">
-        <nav
-            class="p-6 flex justify-between items-center text-xs border-b border-white/5 sticky top-0 bg-terminal-bg z-50"
-        >
-            <div class="flex items-center gap-4">
-                <span class="text-terminal-purple font-bold">DARLINGSON</span>
-                <div class="hidden md:flex gap-4">
-                    <a href="projects" class="hover:text-terminal-purple"
-                        >./PROJECTS</a
-                    >
-                    <a href="/blog" class="hover:text-terminal-purple">./BLOG</a
-                    >
+    <body class="min-h-screen flex flex-col bg-background text-on-surface">
+        <header class="w-full sticky top-0 z-50 bg-background/80 backdrop-blur-md border-b border-outline-variant/30">
+            <nav class="flex justify-between items-center max-w-[1200px] mx-auto px-6 md:px-8 py-4">
+                <a href="/" class="font-display font-semibold text-[22px] tracking-tight text-on-background">Darlingson Makuwila</a>
+                <div class="hidden md:flex items-center gap-8">
+                    <a href="/" class="text-[13px] font-semibold tracking-widest uppercase text-primary border-b-2 border-primary pb-1">Home</a>
+                    <a href="/projects" class="text-[13px] font-semibold tracking-widest uppercase text-on-surface-variant hover:text-primary transition-colors">Projects</a>
+                    <a href="/blog" class="text-[13px] font-semibold tracking-widest uppercase text-on-surface-variant hover:text-primary transition-colors">Blog</a>
+                    <a href="#contact" class="ml-2 px-6 py-2.5 bg-primary text-on-primary rounded-lg text-[13px] font-semibold tracking-wide hover:bg-primary-hover transition-colors">Contact Me</a>
                 </div>
-            </div>
-
-            <div class="flex items-center gap-4">
-                <div class="flex items-center gap-2">
-                    <span
-                        class="w-2 h-2 rounded-full bg-terminal-green animate-pulse"
-                    ></span>
-                    <span
-                        class="text-[10px] opacity-50 uppercase hidden sm:inline"
-                        >Production_Server: Online</span
-                    >
-                    <span class="text-[10px] opacity-50 uppercase sm:hidden"
-                        >Online</span
-                    >
-                </div>
-
-                <button
-                    id="menu-btn"
-                    class="md:hidden text-terminal-purple focus:outline-none"
-                    aria-label="Toggle Menu"
-                >
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke-width="1.5"
-                        stroke="currentColor"
-                        class="w-6 h-6"
-                    >
-                        <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-                        ></path>
-                    </svg>
+                <button id="menu-btn" class="md:hidden text-on-background p-2" aria-label="Toggle Menu">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
                 </button>
+            </nav>
+            <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-background border-b border-outline-variant/30 flex flex-col p-6 gap-4">
+                <a href="/" class="text-sm font-semibold uppercase tracking-wide text-primary">Home</a>
+                <a href="/projects" class="text-sm font-semibold uppercase tracking-wide text-on-surface-variant">Projects</a>
+                <a href="/blog" class="text-sm font-semibold uppercase tracking-wide text-on-surface-variant">Blog</a>
+                <a href="#contact" class="mt-2 px-6 py-3 bg-primary text-on-primary rounded-lg text-sm font-semibold text-center">Contact Me</a>
             </div>
+        </header>
 
-            <div
-                id="mobile-menu"
-                class="hidden absolute top-full left-0 w-full bg-terminal-bg border-b border-white/5 flex flex-col p-6 gap-4 md:hidden"
-            >
-                <a href="/projects" class="hover:text-terminal-purple"
-                    >./PROJECTS</a
-                >
-                <a href="/blog" class="hover:text-terminal-purple">./BLOG</a>
-            </div>
-        </nav>
-
-        <main class="flex-grow p-4 md:p-12">
+        <main class="flex-grow">
             <slot />
         </main>
 
-        <footer
-            class="p-4 md:p-2 border-t border-white/5 flex flex-col md:flex-row justify-between text-[10px] opacity-40 gap-2"
-        >
-            <div class="flex justify-between md:justify-start gap-4">
-                <span>CPU_LOAD: 0.12MS</span>
-                <span>MEM_USAGE: 4.2GB</span>
-            </div>
-            <div class="flex justify-between md:justify-end gap-4 uppercase">
-                <span>Uptime: 99.9%</span>
-                <span class="text-terminal-green">● System_Stable</span>
+        <footer id="contact" class="w-full border-t border-outline-variant/30 bg-background">
+            <div class="max-w-[1200px] mx-auto px-6 md:px-8 py-12 flex flex-col md:flex-row justify-between gap-8">
+                <div class="space-y-3">
+                    <div class="font-display font-semibold text-lg">Darlingson Makuwila</div>
+                    <p class="text-sm text-on-surface-variant max-w-sm leading-relaxed">© 2026 Darlingson Makuwila. Built with precision and a passion for scalable technology.</p>
+                </div>
+                <div class="flex flex-wrap gap-6 text-[13px] font-semibold tracking-wide uppercase text-on-surface-variant">
+                    <a href="https://github.com/darlingson" target="_blank" class="hover:text-primary transition-colors">GitHub</a>
+                    <a href="https://www.linkedin.com/in/darlingsonm" target="_blank" class="hover:text-primary transition-colors">LinkedIn</a>
+                    <a href="mailto:hello@darlingson.dev" class="hover:text-primary transition-colors">Email</a>
+                    <a href="/projects" class="hover:text-primary transition-colors">Projects</a>
+                </div>
             </div>
         </footer>
 
         <script>
             const btn = document.getElementById("menu-btn");
             const menu = document.getElementById("mobile-menu");
-
-            btn?.addEventListener("click", () => {
-                menu?.classList.toggle("hidden");
-            });
+            btn?.addEventListener("click", () => menu?.classList.toggle("hidden"));
         </script>
     </body>
 </html>

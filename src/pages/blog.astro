@@ -1,16 +1,11 @@
 ---
 import Layout from "../layouts/Layout.astro";
 
-// 1. YOUR FLAT DATA ARRAY
-// Just add new items here. The logic below handles the rest.
 const rawData = [
   { title: "001_TRANSFORMER_ARCH.md", category: "/AI_ML", desc: "Breaking down multi-head attention mechanisms and positional encoding implementation.", icon: "🧠" },
   { title: "002_RL_Q_LEARNING.py", category: "/AI_ML", desc: "Implementing Q-learning tables for simple grid-world optimization problems.", icon: "🧠" },
-  
   { title: "KAFKA_PIPELINES.conf", category: "/Data_Engineering", desc: "Distributed messaging systems and stream processing architectures for real-time telemetry.", icon: "🗄️" },
   { title: "ETL_WORKFLOWS.sql", category: "/Data_Engineering", desc: "Optimization strategies for large-scale data ingestion and transformation in PostgreSQL.", icon: "🗄️" },
-  
-  // For Languages, the 'title' acts as the filename, and 'desc' isn't used in the small list view
   { title: "coroutines.log", category: "/Languages", subCategory: "KOTLIN/", icon: "<>" },
   { title: "generics.notes", category: "/Languages", subCategory: "KOTLIN/", icon: "<>" },
   { title: "blazor_wasm.md", category: "/Languages", subCategory: "DOTNET/", icon: "<>" },
@@ -19,7 +14,6 @@ const rawData = [
   { title: "poetry_env.log", category: "/Languages", subCategory: "PYTHON/", icon: "<>" },
 ];
 
-// 2. AUTOMATIC GROUPING LOGIC
 const categories = [...new Set(rawData.map(item => item.category))].map(catName => {
   const items = rawData.filter(i => i.category === catName);
   return {
@@ -31,63 +25,45 @@ const categories = [...new Set(rawData.map(item => item.category))].map(catName 
 });
 ---
 
-<Layout title="Darlingson Makuwila | The Knowledge Index Hub">
-  <main class="min-h-screen bg-[#0a0a0a] text-[#a0a0a0] font-mono p-8 md:p-16">
-    
-    <header class="mb-12">
-      <div class="text-sm mb-4">
-        <span class="text-green-500">guest@brain</span> : 
-        <span class="text-purple-500">/dev/mem</span> $ 
-        <span class="text-white">grep -r "learnings" /dev/brain</span>
-      </div>
-      <h1 class="text-4xl md:text-5xl font-bold text-white mb-2">
-        The Knowledge Index <span class="text-purple-600">Hub</span>
-      </h1>
-      <p class="text-gray-500 max-w-2xl text-sm">
-        Personal documentation and technical deep-dives by Darlingson Makuwila. 
-        Tracing the path from software engineering to artificial intelligence.
-      </p>
+<Layout title="Darlingson Makuwila | Blog">
+  <div class="max-w-[1200px] mx-auto px-6 md:px-8 py-12 md:py-16">
+    <header class="max-w-3xl mb-12">
+      <p class="text-xs font-semibold tracking-[0.15em] uppercase text-primary mb-3">Journal</p>
+      <h1 class="font-display font-bold text-[36px] md:text-[44px] leading-tight tracking-[-0.02em] text-on-background mb-4">The Knowledge Index <span class="text-primary">Hub</span></h1>
+      <p class="text-[16px] leading-relaxed text-on-surface-variant">Personal documentation and technical deep-dives. Tracing the path from software engineering to artificial intelligence.</p>
     </header>
 
-    <section class="space-y-16">
+    <section class="space-y-14">
       {categories.map(cat => (
         <div>
-          <div class="flex items-center justify-between border-b border-gray-800 pb-2 mb-6">
-            <h2 class="text-xl font-bold text-white flex items-center gap-3">
-              <span class="text-purple-500">{cat.name === "/Languages" ? "<>" : cat.icon}</span> {cat.name}
+          <div class="flex items-center justify-between border-b border-outline-variant/30 pb-3 mb-6">
+            <h2 class="font-display font-semibold text-lg text-on-background flex items-center gap-3">
+              <span class="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center text-primary text-sm">{cat.name === "/Languages" ? "<>" : cat.icon}</span> {cat.name}
             </h2>
-            <span class="text-[10px] text-gray-600 tracking-[0.2em]">{cat.count}</span>
+            <span class="text-[11px] font-semibold tracking-[0.15em] text-on-surface-variant/60">{cat.count}</span>
           </div>
           
           {cat.name === "/Languages" ? (
-            /* SPECIAL LAYOUT FOR LANGUAGES */
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
               {[...new Set(cat.items.map(i => i.subCategory))].map(sub => (
-                <div class="border border-gray-900 bg-[#0c0c0c] p-6 rounded-sm">
-                  <h3 class="text-[10px] text-gray-600 mb-4 tracking-tighter uppercase">{sub}</h3>
-                  <ul class="space-y-2">
+                <div class="bg-surface border border-outline-variant/30 rounded-2xl p-6">
+                  <h3 class="text-[11px] font-semibold tracking-widest uppercase text-primary mb-4">{sub}</h3>
+                  <ul class="space-y-2.5">
                     {cat.items.filter(i => i.subCategory === sub).map(file => (
-                      <li class="flex items-center gap-2 text-sm hover:text-white cursor-pointer transition-colors">
-                        <span class="text-gray-800">•</span> {file.title}
+                      <li class="flex items-center gap-2 text-sm text-on-surface-variant hover:text-primary cursor-pointer transition-colors">
+                        <span class="w-1 h-1 rounded-full bg-outline-variant"></span> {file.title}
                       </li>
                     ))}
-                    <li class="text-gray-800 text-[10px] mt-2 italic">... more</li>
                   </ul>
                 </div>
               ))}
             </div>
           ) : (
-            /* STANDARD LAYOUT FOR AI/ML & DATA ENGINEERING */
             <div class="grid md:grid-cols-2 gap-4">
               {cat.items.map(item => (
-                <div class="group border border-gray-900 bg-[#0c0c0c] p-6 rounded-sm hover:border-purple-900/50 transition-all cursor-pointer relative">
-                  <span class="absolute top-4 right-4 text-gray-800 group-hover:text-purple-500 transition-colors text-xs">↗</span>
-                  <h3 class="text-purple-500/90 font-bold mb-3 text-sm tracking-tight group-hover:text-purple-400">
-                    {item.title}
-                  </h3>
-                  <p class="text-xs leading-relaxed text-gray-500 group-hover:text-gray-400">
-                    {item.desc}
-                  </p>
+                <div class="group bg-surface border border-outline-variant/30 rounded-2xl p-6 hover:border-primary/20 transition-colors">
+                  <h3 class="font-display font-semibold text-[15px] text-primary mb-2 group-hover:text-primary-hover">{item.title}</h3>
+                  <p class="text-sm leading-relaxed text-on-surface-variant">{item.desc}</p>
                 </div>
               ))}
             </div>
@@ -95,5 +71,5 @@ const categories = [...new Set(rawData.map(item => item.category))].map(catName 
         </div>
       ))}
     </section>
-  </main>
+  </div>
 </Layout>
