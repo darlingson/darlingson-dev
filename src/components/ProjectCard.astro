@@ -6,8 +6,9 @@ interface Props {
   status: string;
   tag: string;
   fileName: string;
+  url?: string;
 }
-const { title, description, tech, status, tag } = Astro.props;
+const { title, description, tech, status, tag, url } = Astro.props;
 const isLive = status.toLowerCase().includes("production") || status.toLowerCase().includes("live");
 ---
 
@@ -23,6 +24,6 @@ const isLive = status.toLowerCase().includes("production") || status.toLowerCase
       <p class="text-[11px] font-semibold tracking-widest uppercase text-on-surface-variant/60">Build</p>
       <p class="text-xs font-semibold tracking-wide uppercase text-on-background mt-1">{tech}</p>
     </div>
-    <a href="/projects" class="text-sm font-semibold text-primary flex items-center gap-1.5 hover:gap-2 transition-all">View <span>→</span></a>
+    <a href={url || "/projects"} target={url ? "_blank" : undefined} rel={url ? "noopener noreferrer" : undefined} class="text-sm font-semibold text-primary flex items-center gap-1.5 hover:gap-2 transition-all">{url ? "Visit" : "View"} <span>→</span></a>
   </div>
 </div>

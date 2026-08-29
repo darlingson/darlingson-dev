@@ -6,24 +6,33 @@ import ContactCard from "../components/ContactCard.astro";
 const projects = [
 	{
 		title: "Fast Budget",
-		description: "A budgeting tool for everyday use — expense tracking and goal-setting, kept simple enough that I actually open it. Built with TypeScript.",
-		tech: "TypeScript",
+		description: "A lightweight budgeting tool for quick expense planning. Designed for offline-first use and optimized for low-data environments. Built with React.",
+		tech: "React",
 		status: "Production",
 		tag: "FinTech",
 		fileName: "fast_budget.ts",
+		url: "https://fast-budget-eight.vercel.app",
 	},
 	{
-		title: "Mpira Analytics",
-		description: "Analytics for Malawian football — player stats and match data, visualized. Still a work in progress. Built with Vue.",
-		tech: "Vue",
+		title: "Malawi Recipes",
+		description: "A mobile-friendly app for discovering authentic Malawian recipes, aimed at preserving culinary heritage and promoting local cuisine. Built with Flutter.",
+		tech: "Flutter",
 		status: "In Development",
-		tag: "Data Viz",
-		fileName: "mpira_analytics.vue",
+		tag: "Mobile",
+		fileName: "malawi_recipes.dart",
+	},
+	{
+		title: "Financial Overflow",
+		description: "Analytics for the Malawi Stock Exchange — structuring financial data for publicly listed companies and building analytics around it.",
+		tech: "Data Analytics",
+		status: "In Development",
+		tag: "Finance",
+		fileName: "financial_overflow.py",
 	},
 ];
 ---
 
-<Layout title="Darlingson Makuwila | Software Engineer" description="Full-stack developer moving into backend engineering, based in Blantyre, Malawi. Currently a developer at Nico Technologies working with Spring Boot and Vue/Nuxt. Building Fast Budget and Mpira Analytics.">
+<Layout title="Darlingson Makuwila | Software Engineer" description="Full-stack developer focused on backend systems, based in Blantyre, Malawi. Currently a developer at Nico Technologies building web systems with Laravel and C# (ASP.NET). Building Fast Budget, Malawi Recipes and Financial Overflow.">
 	<Hero />
 
 	<!-- Who I Am -->
@@ -33,8 +42,8 @@ const projects = [
 				<p class="text-xs font-semibold tracking-[0.15em] uppercase text-primary mb-3">Who I Am</p>
 				<h2 class="font-display font-semibold text-[28px] md:text-[32px] leading-tight text-on-background mb-6">From full-stack to backend-focused.</h2>
 				<div class="space-y-4 text-[15px] leading-relaxed text-on-surface-variant">
-					<p>I started as a full-stack developer — Laravel on the backend, React, Vue, Next.js and Nuxt.js on the front — and I'm now moving toward backend engineering with Spring Boot and ASP.NET. I studied Management Information Systems at the Malawi University of Business and Applied Sciences, and I currently work as a developer at Nico Technologies, building backend and frontend systems across a few different products.</p>
-					<p>Outside work I build my own things — a budgeting app I actually use daily, and a football analytics project for Malawian football that's still in progress.</p>
+					<p>I'm a software developer who grew up across the full stack — Laravel and PHP on the backend, React, Vue, Next.js and Nuxt.js on the front — and now spend most of my time on backend systems with C# (ASP.NET) and Spring Boot. I studied Management Information Systems at the Malawi University of Business and Applied Sciences, and I currently work at Nico Technologies building web systems for customers across the Nico Group.</p>
+					<p>Outside work I build my own products — Fast Budget, a daily-use budgeting app, and Malawi Recipes, a mobile app for discovering Malawian cuisine.</p>
 				</div>
 			</div>
 		</div>
@@ -46,16 +55,26 @@ const projects = [
 			<h2 class="font-display font-semibold text-[28px] text-on-background mb-3">Core Competencies</h2>
 			<div class="w-14 h-1 bg-primary mx-auto rounded-full"></div>
 		</div>
-		<div class="grid grid-cols-1 md:grid-cols-2 gap-5 max-w-4xl mx-auto">
+		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
 			<div class="group p-7 bg-surface-low border border-outline-variant/30 rounded-2xl hover:border-primary/40 transition-colors">
 				<div class="w-11 h-11 flex items-center justify-center bg-primary/10 rounded-xl mb-5 text-primary font-mono text-lg">BE</div>
 				<h4 class="font-display font-semibold text-lg mb-2 text-on-background">Backend Engineering</h4>
-				<p class="text-sm leading-relaxed text-on-surface-variant">Spring Boot and ASP.NET, moving from full-stack into backend-focused work.</p>
+				<p class="text-sm leading-relaxed text-on-surface-variant">C# (ASP.NET), PHP (Laravel) and Java (Spring Boot). APIs, auth and data-heavy systems.</p>
 			</div>
 			<div class="group p-7 bg-surface-low border border-outline-variant/30 rounded-2xl hover:border-primary/40 transition-colors">
 				<div class="w-11 h-11 flex items-center justify-center bg-primary/10 rounded-xl mb-5 text-primary font-mono text-lg">FS</div>
-				<h4 class="font-display font-semibold text-lg mb-2 text-on-background">Full-Stack Development</h4>
-				<p class="text-sm leading-relaxed text-on-surface-variant">Laravel, React, Vue, Next.js, Nuxt.js.</p>
+				<h4 class="font-display font-semibold text-lg mb-2 text-on-background">Frontend &amp; Full-Stack</h4>
+				<p class="text-sm leading-relaxed text-on-surface-variant">React, Vue, Next.js and Nuxt.js, plus Blazor for .NET-frontend work.</p>
+			</div>
+			<div class="group p-7 bg-surface-low border border-outline-variant/30 rounded-2xl hover:border-primary/40 transition-colors">
+				<div class="w-11 h-11 flex items-center justify-center bg-primary/10 rounded-xl mb-5 text-primary font-mono text-lg">MB</div>
+				<h4 class="font-display font-semibold text-lg mb-2 text-on-background">Mobile App Development</h4>
+				<p class="text-sm leading-relaxed text-on-surface-variant">Flutter, with Kotlin/Jetpack Compose and Java for native Android.</p>
+			</div>
+			<div class="group p-7 bg-surface-low border border-outline-variant/30 rounded-2xl hover:border-primary/40 transition-colors">
+				<div class="w-11 h-11 flex items-center justify-center bg-primary/10 rounded-xl mb-5 text-primary font-mono text-lg">AC</div>
+				<h4 class="font-display font-semibold text-lg mb-2 text-on-background">Accounting &amp; Systems</h4>
+				<p class="text-sm leading-relaxed text-on-surface-variant">MIS background: cost, financial and management accounting for finance and reporting tools.</p>
 			</div>
 		</div>
 	</section>
