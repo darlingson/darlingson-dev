@@ -1,24 +1,27 @@
 @import "tailwindcss";
 
 @theme {
-  --color-background: #f8f9ff;
-  --color-surface: #ffffff;
-  --color-surface-low: #eff4ff;
-  --color-surface-container: #e5eeff;
-  --color-surface-variant: #d3e4fe;
-  --color-primary: #004ac6;
-  --color-primary-hover: #003ea8;
-  --color-primary-container: #2563eb;
+  --color-background: #0b0f17;
+  --color-surface: #121826;
+  --color-surface-low: #161e2e;
+  --color-surface-container: #1c2638;
+  --color-surface-variant: #223047;
+  --color-primary: #3fb950;
+  --color-primary-hover: #36a64f;
+  --color-primary-container: #2ea043;
   --color-on-primary: #ffffff;
-  --color-on-background: #0b1c30;
-  --color-on-surface: #0b1c30;
-  --color-on-surface-variant: #434655;
-  --color-outline: #737686;
-  --color-outline-variant: #c3c6d7;
-  --color-secondary: #565e74;
+  --color-on-background: #e6edf3;
+  --color-on-surface: #e6edf3;
+  --color-on-surface-variant: #9aa7b8;
+  --color-outline: #2c3850;
+  --color-outline-variant: #28324a;
+  --color-secondary: #d29922;
+  --color-rust: #f85149;
+  --color-amber: #d29922;
 
-  --font-display: "Playfair Display", serif;
+  --font-display: "JetBrains Mono", monospace;
   --font-body: "Plus Jakarta Sans", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
 }
 
 @layer base {
@@ -37,10 +40,10 @@
 }
 
 .card-shadow {
-  box-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.08);
+  box-shadow: 0 18px 40px -18px rgba(0, 0, 0, 0.6);
 }
 .text-gradient {
-  background: linear-gradient(135deg, #004ac6 0%, #2563eb 100%);
+  background: linear-gradient(135deg, #3fb950 0%, #d29922 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;

@@ -8,12 +8,13 @@ interface Props {
   fileName: string;
 }
 const { title, description, tech, status, tag } = Astro.props;
+const isLive = status.toLowerCase().includes("production") || status.toLowerCase().includes("live");
 ---
 
 <div class="group bg-surface border border-outline-variant/30 rounded-2xl p-8 card-shadow hover:border-primary/20 transition-colors flex flex-col h-full">
   <div class="flex items-center gap-2 mb-5">
     <span class="px-3 py-1 bg-surface-container rounded-full text-[11px] font-semibold tracking-widest uppercase text-on-surface-variant">{tag}</span>
-    <span class:list={["px-2.5 py-1 rounded-full text-[11px] font-semibold tracking-wide uppercase border", status === 'PRODUCTION' ? "bg-green-50 text-green-700 border-green-200" : "bg-amber-50 text-amber-700 border-amber-200"]}>{status}</span>
+    <span class:list={["px-2.5 py-1 rounded-full text-[11px] font-semibold tracking-wide uppercase border", isLive ? "bg-primary/15 text-primary border-primary/30" : "bg-amber/15 text-amber border-amber/30"]}>{status}</span>
   </div>
   <h3 class="font-display font-semibold text-2xl mb-3 text-on-background group-hover:text-primary transition-colors">{title}</h3>
   <p class="text-[15px] leading-relaxed text-on-surface-variant mb-6 flex-grow">{description}</p>

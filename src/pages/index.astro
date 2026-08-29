@@ -5,20 +5,20 @@ import ProjectCard from "../components/ProjectCard.astro";
 import ContactCard from "../components/ContactCard.astro";
 const projects = [
 	{
-		title: "Ndalama Goals",
-		description: "Personal finance management tool designed for the Malawian context. Features automated goal tracking, expense categorization, and multi-currency support.",
-		tech: "Jetpack Compose / Kotlin",
-		status: "PRODUCTION",
+		title: "Fast Budget",
+		description: "A budgeting tool for everyday use — expense tracking and goal-setting, kept simple enough that I actually open it. Built with TypeScript.",
+		tech: "TypeScript",
+		status: "Production",
 		tag: "FinTech",
-		fileName: "ndalama_goals.sh",
+		fileName: "fast_budget.ts",
 	},
 	{
-		title: "Mpira Metrics",
-		description: "A deep-dive analytics platform for Malawian football. Visualizing player performance statistics and match heatmaps using advanced data scraping.",
-		tech: "Typescript / Python / Plotly",
-		status: "BETA_RELEASE",
-		tag: "Data_Viz",
-		fileName: "mpira_metrics.py",
+		title: "Mpira Analytics",
+		description: "Analytics for Malawian football — player stats and match data, visualized. Still a work in progress. Built with Vue.",
+		tech: "Vue",
+		status: "In Development",
+		tag: "Data Viz",
+		fileName: "mpira_analytics.vue",
 	},
 ];
 ---
@@ -29,38 +29,12 @@ const projects = [
 	<!-- Who I Am -->
 	<section class="bg-surface border-y border-outline-variant/30">
 		<div class="max-w-[1200px] mx-auto px-6 md:px-8 py-16 md:py-20">
-			<div class="grid md:grid-cols-2 gap-12 md:gap-16 items-start">
-				<div>
-					<p class="text-xs font-semibold tracking-[0.15em] uppercase text-primary mb-3">Who I Am</p>
-					<h2 class="font-display font-semibold text-[30px] md:text-[32px] leading-tight text-on-background mb-6">Engineering excellence with a focus on impact.</h2>
-					<div class="space-y-4 text-[15px] leading-relaxed text-on-surface-variant">
-						<p>My journey in software engineering is driven by a fascination with systems that scale. From designing high-performance backends to integrating ML models into production, I build technology that solves real-world problems.</p>
-						<p>I believe code should be as clean as it is functional — rigorous engineering paired with a deep care for user experience.</p>
-					</div>
-				</div>
-				<div class="grid grid-cols-2 gap-4">
-					<div class="p-6 bg-background border border-outline-variant/30 rounded-xl">
-						<p class="font-display font-bold text-2xl text-primary mb-1">3+</p>
-						<p class="text-xs font-semibold tracking-wide uppercase text-on-surface-variant">Years Experience</p>
-					</div>
-					<div class="p-6 bg-background border border-outline-variant/30 rounded-xl">
-						<p class="font-display font-bold text-2xl text-primary mb-1">20+</p>
-						<p class="text-xs font-semibold tracking-wide uppercase text-on-surface-variant">Systems Shipped</p>
-					</div>
-					<div class="p-6 bg-background border border-outline-variant/30 rounded-xl">
-						<p class="font-display font-bold text-2xl text-primary mb-1">10k+</p>
-						<p class="text-xs font-semibold tracking-wide uppercase text-on-surface-variant">Active Users</p>
-					</div>
-					<div class="p-6 bg-background border border-outline-variant/30 rounded-xl">
-						<p class="font-display font-bold text-2xl text-primary mb-1">100%</p>
-						<p class="text-xs font-semibold tracking-wide uppercase text-on-surface-variant">Reliability Focused</p>
-					</div>
-					<div class="col-span-2 p-5 bg-surface-low border border-outline-variant/30 rounded-xl">
-						<p class="text-xs font-semibold tracking-widest uppercase text-primary mb-2">Current Stack</p>
-						<div class="flex flex-wrap gap-2">
-							{["TypeScript","C# / .NET","Kotlin","Python","Docker"].map(s => <span class="px-3 py-1 bg-surface border border-outline-variant/30 rounded-full text-xs font-medium text-on-surface-variant">{s}</span>)}
-						</div>
-					</div>
+			<div class="max-w-3xl">
+				<p class="text-xs font-semibold tracking-[0.15em] uppercase text-primary mb-3">Who I Am</p>
+				<h2 class="font-display font-semibold text-[28px] md:text-[32px] leading-tight text-on-background mb-6">From full-stack to backend-focused.</h2>
+				<div class="space-y-4 text-[15px] leading-relaxed text-on-surface-variant">
+					<p>I started as a full-stack developer — Laravel on the backend, React, Vue, Next.js and Nuxt.js on the front — and I'm now moving toward backend engineering with Spring Boot and ASP.NET. I studied Management Information Systems at the Malawi University of Business and Applied Sciences, and I currently work as a developer at Nico Technologies, building backend and frontend systems across a few different products.</p>
+					<p>Outside work I build my own things — a budgeting app I actually use daily, and a football analytics project for Malawian football that's still in progress.</p>
 				</div>
 			</div>
 		</div>
@@ -69,29 +43,19 @@ const projects = [
 	<!-- Core Competencies -->
 	<section class="max-w-[1200px] mx-auto px-6 md:px-8 py-16 md:py-20">
 		<div class="text-center mb-12">
-			<h2 class="font-display font-semibold text-[30px] text-on-background mb-3">Core Competencies</h2>
+			<h2 class="font-display font-semibold text-[28px] text-on-background mb-3">Core Competencies</h2>
 			<div class="w-14 h-1 bg-primary mx-auto rounded-full"></div>
 		</div>
-		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
-			<div class="group p-7 bg-surface-low border border-outline-variant/30 rounded-2xl hover:bg-primary hover:border-primary transition-all duration-300">
-				<div class="w-11 h-11 flex items-center justify-center bg-primary/10 rounded-xl mb-5 group-hover:bg-white/15 text-primary group-hover:text-white transition-colors">◧</div>
-				<h4 class="font-display font-semibold text-lg mb-2 group-hover:text-white">Backend Engineering</h4>
-				<p class="text-sm leading-relaxed text-on-surface-variant group-hover:text-white/80">Designing robust APIs and scalable microservices with Python, .NET, and Node.js.</p>
+		<div class="grid grid-cols-1 md:grid-cols-2 gap-5 max-w-4xl mx-auto">
+			<div class="group p-7 bg-surface-low border border-outline-variant/30 rounded-2xl hover:border-primary/40 transition-colors">
+				<div class="w-11 h-11 flex items-center justify-center bg-primary/10 rounded-xl mb-5 text-primary font-mono text-lg">BE</div>
+				<h4 class="font-display font-semibold text-lg mb-2 text-on-background">Backend Engineering</h4>
+				<p class="text-sm leading-relaxed text-on-surface-variant">Spring Boot and ASP.NET, moving from full-stack into backend-focused work.</p>
 			</div>
-			<div class="group p-7 bg-surface-low border border-outline-variant/30 rounded-2xl hover:bg-primary hover:border-primary transition-all duration-300">
-				<div class="w-11 h-11 flex items-center justify-center bg-primary/10 rounded-xl mb-5 group-hover:bg-white/15 text-primary group-hover:text-white transition-colors">◎</div>
-				<h4 class="font-display font-semibold text-lg mb-2 group-hover:text-white">AI / ML Solutions</h4>
-				<p class="text-sm leading-relaxed text-on-surface-variant group-hover:text-white/80">Integrating LLMs and predictive analytics into production-ready systems.</p>
-			</div>
-			<div class="group p-7 bg-surface-low border border-outline-variant/30 rounded-2xl hover:bg-primary hover:border-primary transition-all duration-300">
-				<div class="w-11 h-11 flex items-center justify-center bg-primary/10 rounded-xl mb-5 group-hover:bg-white/15 text-primary group-hover:text-white transition-colors">☁</div>
-				<h4 class="font-display font-semibold text-lg mb-2 group-hover:text-white">Cloud Infrastructure</h4>
-				<p class="text-sm leading-relaxed text-on-surface-variant group-hover:text-white/80">Containerized workloads and serverless deployments across cloud platforms.</p>
-			</div>
-			<div class="group p-7 bg-surface-low border border-outline-variant/30 rounded-2xl hover:bg-primary hover:border-primary transition-all duration-300">
-				<div class="w-11 h-11 flex items-center justify-center bg-primary/10 rounded-xl mb-5 group-hover:bg-white/15 text-primary group-hover:text-white transition-colors">▤</div>
-				<h4 class="font-display font-semibold text-lg mb-2 group-hover:text-white">Data Engineering</h4>
-				<p class="text-sm leading-relaxed text-on-surface-variant group-hover:text-white/80">ETL pipelines and data warehouses to unlock insights from massive datasets.</p>
+			<div class="group p-7 bg-surface-low border border-outline-variant/30 rounded-2xl hover:border-primary/40 transition-colors">
+				<div class="w-11 h-11 flex items-center justify-center bg-primary/10 rounded-xl mb-5 text-primary font-mono text-lg">FS</div>
+				<h4 class="font-display font-semibold text-lg mb-2 text-on-background">Full-Stack Development</h4>
+				<p class="text-sm leading-relaxed text-on-surface-variant">Laravel, React, Vue, Next.js, Nuxt.js.</p>
 			</div>
 		</div>
 	</section>
@@ -102,7 +66,7 @@ const projects = [
 			<div class="flex justify-between items-end mb-10">
 				<div>
 					<p class="text-xs font-semibold tracking-[0.15em] uppercase text-primary mb-2">Portfolio</p>
-					<h2 class="font-display font-semibold text-[30px] text-on-background">Selected Projects</h2>
+					<h2 class="font-display font-semibold text-[28px] text-on-background">Selected Projects</h2>
 				</div>
 				<a href="/projects" class="hidden md:flex items-center gap-2 text-sm font-semibold text-primary hover:gap-3 transition-all">View All Projects <span>→</span></a>
 			</div>
@@ -110,35 +74,6 @@ const projects = [
 				{projects.map((project) => <ProjectCard {...project} />)}
 			</div>
 			<div class="md:hidden mt-6 text-center"><a href="/projects" class="text-sm font-semibold text-primary">View All Projects →</a></div>
-		</div>
-	</section>
-
-	<!-- Technical Insights -->
-	<section class="max-w-[1200px] mx-auto px-6 md:px-8 py-16 md:py-20">
-		<div class="text-center mb-12">
-			<p class="text-xs font-semibold tracking-[0.15em] uppercase text-primary mb-2">Journal</p>
-			<h2 class="font-display font-semibold text-[30px] mb-3">Technical Insights</h2>
-			<p class="text-sm text-on-surface-variant max-w-xl mx-auto">Deep dives into backend architecture, machine learning research, and the craft of building reliable software.</p>
-		</div>
-		<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-			<article class="group p-6 bg-surface border border-outline-variant/30 rounded-2xl hover:border-primary/20 transition-colors">
-				<div class="flex items-center gap-2 text-[11px] font-semibold tracking-wide uppercase text-on-surface-variant/70 mb-3"><span>Backend</span><span class="w-1 h-1 bg-outline rounded-full"></span><span>6 min</span></div>
-				<h3 class="font-display font-semibold text-lg leading-snug mb-2 group-hover:text-primary transition-colors">Scaling Beyond 100k Concurrent Requests</h3>
-				<p class="text-sm leading-relaxed text-on-surface-variant mb-4">How we optimize microservices to handle traffic spikes without increasing latency.</p>
-				<a href="/blog" class="text-sm font-semibold text-primary border-b border-transparent group-hover:border-primary transition-all">Read Article →</a>
-			</article>
-			<article class="group p-6 bg-surface border border-outline-variant/30 rounded-2xl hover:border-primary/20 transition-colors">
-				<div class="flex items-center gap-2 text-[11px] font-semibold tracking-wide uppercase text-on-surface-variant/70 mb-3"><span>AI / ML</span><span class="w-1 h-1 bg-outline rounded-full"></span><span>9 min</span></div>
-				<h3 class="font-display font-semibold text-lg leading-snug mb-2 group-hover:text-primary transition-colors">Practical LLM Implementation in Production</h3>
-				<p class="text-sm leading-relaxed text-on-surface-variant mb-4">Lessons from deploying LLMs for real-time customer sentiment analysis.</p>
-				<a href="/blog" class="text-sm font-semibold text-primary border-b border-transparent group-hover:border-primary transition-all">Read Article →</a>
-			</article>
-			<article class="group p-6 bg-surface border border-outline-variant/30 rounded-2xl hover:border-primary/20 transition-colors">
-				<div class="flex items-center gap-2 text-[11px] font-semibold tracking-wide uppercase text-on-surface-variant/70 mb-3"><span>Craft</span><span class="w-1 h-1 bg-outline rounded-full"></span><span>5 min</span></div>
-				<h3 class="font-display font-semibold text-lg leading-snug mb-2 group-hover:text-primary transition-colors">The Engineering Mindset: Solving for Clarity</h3>
-				<p class="text-sm leading-relaxed text-on-surface-variant mb-4">Why simplicity in architecture is the ultimate mark of technical maturity.</p>
-				<a href="/blog" class="text-sm font-semibold text-primary border-b border-transparent group-hover:border-primary transition-all">Read Article →</a>
-			</article>
 		</div>
 	</section>
 

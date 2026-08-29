@@ -4,32 +4,20 @@ import ProjectCard from "../components/ProjectViewCard.astro";
 
 const projects = [
     {
-        title: "Ndalama Goals",
-        fileName: "PROJECT_V1.0.4.SH",
-        tags: ["FINTECH", "REACT", "SUPABASE"],
-        languages: ["Typescript", "SQL"],
-        description: "A local-first financial management engine designed specifically for Malawian monetary ecosystems. Orchestrates automated goal tracking and granular expense auditing.",
-        branch: "feature/auto-sync",
+        title: "Fast Budget",
+        tags: ["FINTECH", "TYPESCRIPT"],
+        description: "A budgeting tool for everyday use — expense tracking and goal-setting, kept simple enough that I actually open it daily.",
         stability: "PRODUCTION",
-        metaLabel: "COVERAGE",
-        metaValue: "94.2%",
-        action: "EXECUTE",
     },
     {
-        title: "Mpira Metrics",
-        fileName: "ANALYTICS_ENGINE.PY",
-        tags: ["DATA_VIZ", "SCRAPING"],
-        languages: ["Python", "Plotly"],
-        description: "High-fidelity sports analytics platform visualizing the Super League of Malawi. Utilizes complex data scrapers to aggregate player heatmaps.",
-        branch: "master",
-        stability: "BETA_V2",
-        metaLabel: "LATENCY",
-        metaValue: "240ms",
-        action: "RUN_DEBUG",
+        title: "Mpira Analytics",
+        tags: ["DATA_VIZ", "VUE"],
+        description: "Analytics for Malawian football — player stats and match data, visualized. Still a work in progress.",
+        stability: "IN_DEVELOPMENT",
     },
 ];
 
-const allTech = [...new Set(projects.flatMap((p) => [...p.tags, ...p.languages]))].sort();
+const allTech = [...new Set(projects.flatMap((p) => [...p.tags]))].sort();
 ---
 
 <Layout title="Darlingson Makuwila | Projects">
@@ -37,7 +25,7 @@ const allTech = [...new Set(projects.flatMap((p) => [...p.tags, ...p.languages])
         <header class="max-w-3xl mb-10">
             <p class="text-xs font-semibold tracking-[0.15em] uppercase text-primary mb-3">Portfolio</p>
             <h1 class="font-display font-bold text-[36px] md:text-[44px] leading-tight tracking-[-0.02em] text-on-background mb-4">Selected Projects</h1>
-            <p class="text-[16px] leading-relaxed text-on-surface-variant">A curated collection of systems I've designed and shipped — from fintech to data visualization. Filtering by technology.</p>
+            <p class="text-[16px] leading-relaxed text-on-surface-variant">A curated collection of things I've built — from a daily-use budgeting app to a football analytics project. Filtering by technology.</p>
         </header>
 
         <div class="flex flex-wrap gap-2 mb-10">
@@ -46,18 +34,13 @@ const allTech = [...new Set(projects.flatMap((p) => [...p.tags, ...p.languages])
         </div>
 
         <div class="grid md:grid-cols-2 gap-6 mb-16" id="project-grid">
-            {projects.map((project) => <div class="project-wrapper transition-all duration-300" data-tech={JSON.stringify([...project.tags, ...project.languages])}><ProjectCard {...project} /></div>)}
+            {projects.map((project) => <div class="project-wrapper transition-all duration-300" data-tech={JSON.stringify([...project.tags])}><ProjectCard {...project} /></div>)}
         </div>
 
-        <div class="bg-surface border border-outline-variant/30 rounded-2xl p-8 grid md:grid-cols-3 gap-10">
-            <div>
-                <p class="text-[11px] font-semibold tracking-widest uppercase text-primary mb-3">● Local Time</p>
-                <p class="font-display font-semibold text-xl text-on-background">Lilongwe, MW</p>
-                <p class="text-xs text-on-surface-variant mt-1">UTC +02:00 / Central Africa Time</p>
-            </div>
+        <div class="bg-surface border border-outline-variant/30 rounded-2xl p-8 grid md:grid-cols-2 gap-10">
             <div>
                 <p class="text-[11px] font-semibold tracking-widest uppercase text-primary mb-3">Current Mission</p>
-                <p class="text-sm leading-relaxed text-on-surface-variant">Optimizing backend architectures for distributed systems and fine-tuning ML models for regional data patterns.</p>
+                <p class="text-sm leading-relaxed text-on-surface-variant">Building backend and frontend systems across multiple products at Nico Technologies, with a focus on Spring Boot and Vue/Nuxt.</p>
             </div>
             <div>
                 <p class="text-[11px] font-semibold tracking-widest uppercase text-primary mb-3">Availability</p>
