@@ -4,8 +4,9 @@ interface Props {
   tags: string[];
   description: string;
   stability: string;
+  url?: string;
 }
-const { title, tags, description, stability } = Astro.props;
+const { title, tags, description, stability, url } = Astro.props;
 const isLive = stability.toLowerCase().includes("production") || stability.toLowerCase().includes("live");
 const statusLabel = isLive ? "Production" : "In Development";
 ---
@@ -19,4 +20,7 @@ const statusLabel = isLive ? "Production" : "In Development";
   </div>
   <h3 class="font-display font-semibold text-2xl mb-3 text-on-background">{title}</h3>
   <p class="text-[15px] leading-relaxed text-on-surface-variant mb-6 flex-grow">{description}</p>
+  {url && (
+    <a href={url} target="_blank" rel="noopener noreferrer" class="text-sm font-semibold text-primary flex items-center gap-1.5 hover:gap-2 transition-all self-start">Visit <span>→</span></a>
+  )}
 </div>

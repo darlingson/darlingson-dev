@@ -5,7 +5,7 @@ interface Props {
     title: string;
     description?: string;
 }
-const { title, description = "Darlingson Makuwila — full-stack developer focused on backend systems, based in Blantyre, Malawi. Currently a developer at Nico Technologies building web systems with Laravel and C# (ASP.NET)." } = Astro.props;
+const { title, description = "Darlingson Makuwila, software engineer building backend systems and data-driven applications, based in Blantyre, Malawi. Currently builds web systems with C#/.NET and Laravel at Nico Technologies." } = Astro.props;
 const path = Astro.url.pathname;
 const canonical = new URL(path, Astro.site);
 const ogImage = new URL("/og-image.svg", Astro.site);
