@@ -3,6 +3,8 @@ import Layout from "../layouts/Layout.astro";
 import Hero from "../components/Hero.astro";
 import ProjectCard from "../components/ProjectCard.astro";
 import ContactCard from "../components/ContactCard.astro";
+import { Image } from "astro:assets";
+import portrait from "../assets/IMG_20260429_105313.jpg";
 const projects = [
 	{
 		title: "Fast Budget",
@@ -48,12 +50,18 @@ const projects = [
 	<!-- Who I Am -->
 	<section class="bg-surface border-y border-outline-variant/30">
 		<div class="max-w-[1200px] mx-auto px-6 md:px-8 py-16 md:py-20">
-			<div class="max-w-3xl">
-				<p class="text-xs font-semibold tracking-[0.15em] uppercase text-primary mb-3">Who I Am</p>
-				<h2 class="font-display font-semibold text-[28px] md:text-[32px] leading-tight text-on-background mb-6">From full-stack to backend-focused.</h2>
-				<div class="space-y-4 text-[15px] leading-relaxed text-on-surface-variant">
-					<p>I'm a software developer who grew up across the full stack: Laravel and PHP on the backend, React, Vue, Next.js and Nuxt.js on the front, and now spend most of my time on backend systems with C# (ASP.NET) and Spring Boot. I studied Management Information Systems at the Malawi University of Business and Applied Sciences, and I currently work at Nico Technologies building web systems for customers across the Nico Group.</p>
-					<p>Outside work I build my own products: Fast Budget, a daily-use budgeting app; Malawi Recipes, a mobile app for Malawian cuisine; and Mpira Analytics, football analytics for Malawian football that's still in progress.</p>
+			<div class="grid md:grid-cols-[minmax(0,1fr)_320px] gap-10 md:gap-14 items-start">
+				<div class="max-w-3xl">
+					<p class="text-xs font-semibold tracking-[0.15em] uppercase text-primary mb-3">Who I Am</p>
+					<h2 class="font-display font-semibold text-[28px] md:text-[32px] leading-tight text-on-background mb-6">Building toward backend and systems engineering.</h2>
+					<div class="space-y-4 text-[15px] leading-relaxed text-on-surface-variant">
+						<p>I'm a software engineer with a full-stack background and a growing focus on the systems behind applications: backend architecture, APIs, databases, integrations, and data-intensive software. I currently work at Nico Technologies, building web systems for customers across the Nico Group, primarily with C# (ASP.NET) and Laravel.</p>
+						<p>My background spans the broader web ecosystem, including React, Vue, Next.js, Nuxt.js, and Spring Boot. Studying Management Information Systems at the Malawi University of Business and Applied Sciences gave me a foundation that sits somewhere between software, technology, and business.</p>
+						<p>Outside of work, I build my own software and explore ideas that interest me: from Fast Budget, a daily-use budgeting app, to Malawi Recipes, a mobile app for Malawian cuisine, and Mpira Analytics, an ongoing project exploring football data and analytics in Malawi.</p>
+					</div>
+				</div>
+				<div class="order-first md:order-last">
+					<Image src={portrait} alt="Darlingson Makuwila" width={360} height={480} class="w-full rounded-2xl border border-outline-variant/30 card-shadow" loading="lazy" decoding="async" />
 				</div>
 			</div>
 		</div>
@@ -105,6 +113,6 @@ const projects = [
 			<div class="md:hidden mt-6 text-center"><a href="/projects" class="text-sm font-semibold text-primary">View All Projects →</a></div>
 		</div>
 	</section>
-
+	
 	<ContactCard />
 </Layout>
