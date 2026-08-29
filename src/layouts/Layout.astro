@@ -5,7 +5,7 @@ interface Props {
     title: string;
     description?: string;
 }
-const { title, description = "Darlingson Makuwila, software engineer building backend systems and data-driven applications, based in Blantyre, Malawi. Currently builds web systems with C#/.NET and Laravel at Nico Technologies." } = Astro.props;
+const { title, description = "Darlingson Makuwila, software engineer in Blantyre, Malawi building backend systems and data-driven applications with C#/.NET and Laravel at Nico Technologies." } = Astro.props;
 const path = Astro.url.pathname;
 const canonical = new URL(path, Astro.site);
 const ogImage = new URL("/og-image.svg", Astro.site);
@@ -112,6 +112,7 @@ const mobileInactive = `${mobileBase} text-on-surface-variant`;
                 <div class="flex flex-wrap gap-6 text-[13px] font-semibold tracking-wide uppercase text-on-surface-variant">
                     <a href="https://github.com/darlingson" target="_blank" class="hover:text-primary transition-colors">GitHub</a>
                     <a href="https://www.linkedin.com/in/darlingsonm" target="_blank" class="hover:text-primary transition-colors">LinkedIn</a>
+                    <a href="https://www.instagram.com/darlingson_m" target="_blank" class="hover:text-primary transition-colors">Instagram</a>
                     <a href="/contact" class="hover:text-primary transition-colors">Contact</a>
                     <a href="/projects" class="hover:text-primary transition-colors">Projects</a>
                 </div>

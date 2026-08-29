@@ -5,7 +5,7 @@ import sitemap from "@astrojs/sitemap";
 
 // https://astro.build/config
 export default defineConfig({
-    site: 'https://darlingson.dev',
+    site: 'https://darlingson-dev.vercel.app',
     integrations: [sitemap()],
     vite: {
         plugins: [tailwindcss()],

@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://darlingson.dev/sitemap-index.xml
+Sitemap: https://darlingson-dev.vercel.app/sitemap-index.xml

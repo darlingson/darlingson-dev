@@ -1,0 +1,16 @@
+# llms.txt
+# Darlingson Makuwila — Software Engineer
+
+I'm Darlingson Makuwila, a software engineer based in Blantyre, Malawi, focused on backend systems and data-driven applications. I currently build web systems with C#/.NET and Laravel at Nico Technologies, and have a full-stack background across React, Vue, Next.js, Nuxt.js and Spring Boot.
+
+## Projects
+- Fast Budget: a daily-use, offline-first budgeting app built with React. https://fast-budget-eight.vercel.app
+- Financial Overflow: analytics for the Malawi Stock Exchange, built with Next.js and Postgres. https://financial-overflow.vercel.app
+- Mpira Analytics: football analytics for Malawi, built with Vue (in development). https://mpira-analytics.vercel.app
+- Malawi Recipes: a mobile app for discovering Malawian cuisine, built with Flutter.
+
+## Links
+- GitHub: https://github.com/darlingson
+- LinkedIn: https://www.linkedin.com/in/darlingsonm
+- Instagram: https://www.instagram.com/darlingson_m
+- Contact: https://darlingson-dev.vercel.app/contact
