@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#0b0f17"/>
+  <rect x="48" y="48" width="1104" height="534" rx="24" fill="none" stroke="#28324a" stroke-width="2"/>
+  <text x="80" y="250" font-family="'JetBrains Mono', monospace" font-size="64" font-weight="700" fill="#e6edf3">Darlingson Makuwila</text>
+  <text x="80" y="330" font-family="'JetBrains Mono', monospace" font-size="34" font-weight="500" fill="#3fb950">Full-stack developer → backend engineering</text>
+  <text x="80" y="400" font-family="'Plus Jakarta Sans', sans-serif" font-size="28" font-weight="400" fill="#9aa7b8">Blantyre, Malawi · Software Developer at Nico Technologies</text>
+  <circle cx="80" cy="470" r="10" fill="#3fb950"/>
+  <text x="104" y="478" font-family="'JetBrains Mono', monospace" font-size="24" font-weight="500" fill="#9aa7b8">darlingson.dev</text>
+</svg>

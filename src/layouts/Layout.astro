@@ -3,9 +3,12 @@ import "../styles/global.css";
 import Analytics from "@vercel/analytics/astro";
 interface Props {
     title: string;
+    description?: string;
 }
-const { title } = Astro.props;
+const { title, description = "Darlingson Makuwila — full-stack developer moving into backend engineering, based in Blantyre, Malawi. Currently a developer at Nico Technologies." } = Astro.props;
 const path = Astro.url.pathname;
+const canonical = new URL(path, Astro.site);
+const ogImage = new URL("/og-image.svg", Astro.site);
 const isHome = path === "/";
 const isProjects = path.startsWith("/projects");
 const navBase = "text-[13px] font-semibold tracking-widest uppercase";
@@ -22,11 +25,59 @@ const mobileInactive = `${mobileBase} text-on-surface-variant`;
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link rel="canonical" href={canonical} />
+        <meta name="description" content={description} />
+        <meta name="robots" content="index, follow" />
+        <meta name="theme-color" content="#0b0f17" />
+        <meta name="generator" content={Astro.generator} />
+
+        <!-- Open Graph -->
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="Darlingson Makuwila" />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:url" content={canonical} />
+        <meta property="og:image" content={ogImage} />
+        <meta property="og:locale" content="en_US" />
+
+        <!-- Twitter -->
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={title} />
+        <meta name="twitter:description" content={description} />
+        <meta name="twitter:image" content={ogImage} />
+
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
         <title>{title}</title>
         <Analytics />
+
+        <script type="application/ld+json" set:html={JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Person",
+            "name": "Darlingson Makuwila",
+            "url": Astro.site,
+            "jobTitle": "Software Developer",
+            "description": description,
+            "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Blantyre",
+                "addressCountry": "MW"
+            },
+            "alumniOf": {
+                "@type": "CollegeOrUniversity",
+                "name": "Malawi University of Business and Applied Sciences"
+            },
+            "worksFor": {
+                "@type": "Organization",
+                "name": "Nico Technologies"
+            },
+            "sameAs": [
+                "https://github.com/darlingson",
+                "https://www.linkedin.com/in/darlingsonm",
+                "https://www.instagram.com/@darlingson_m"
+            ]
+        })} />
     </head>
     <body class="min-h-screen flex flex-col bg-background text-on-surface">
         <header class="w-full sticky top-0 z-50 bg-background/80 backdrop-blur-md border-b border-outline-variant/30">

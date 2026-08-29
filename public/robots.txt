@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://darlingson.dev/sitemap-index.xml
