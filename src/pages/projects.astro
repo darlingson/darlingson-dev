@@ -30,6 +30,48 @@ const projects = [
         description: "A mobile-friendly app for discovering authentic Malawian recipes, aimed at preserving culinary heritage and promoting local cuisine. Built with Flutter.",
         stability: "IN_DEVELOPMENT",
     },
+    {
+        title: "Implode",
+        tags: ["DEVOPS", "GO"],
+        description: "A self-hosted, one-click deployment platform for .NET applications. Paste a Git repository URL and Implode clones it, detects the .NET setup, builds a Docker image, and runs your app. Backend powered by Go.",
+        stability: "IN_DEVELOPMENT",
+        url: "https://github.com/darlingson/implode",
+    },
+    {
+        title: "Incident & Crisis Management Platform",
+        tags: ["ENTERPRISE", ".NET"],
+        description: "A system for large organizations to manage incidents: workplace accidents, facility issues, security breaches, natural disasters, and reputational incidents. Built with .NET.",
+        stability: "IN_DEVELOPMENT",
+        url: "https://github.com/darlingson/Incident-Crisis-Management-Platform",
+    },
+    {
+        title: "Photon",
+        tags: ["FINTECH", "C#"],
+        description: "KYC as a service: identity verification and onboarding workflows exposed as an API. Built with C#.",
+        stability: "IN_DEVELOPMENT",
+        url: "https://github.com/darlingson/Photon",
+    },
+    {
+        title: "Blantyre Pinball",
+        tags: ["GAME", "TYPESCRIPT"],
+        description: "A pinball-themed web experiment for Blantyre. Early exploration still taking shape, built with TanStack Start.",
+        stability: "IN_DEVELOPMENT",
+        url: "https://github.com/darlingson/blantyre-pinball",
+    },
+    {
+        title: "Bawo Go",
+        tags: ["GAME", "NEXTJS"],
+        description: "An online version of Bawo, the traditional Malawian board game. Play against the computer at varying difficulty levels or pass-and-play with a friend. Built with Next.js.",
+        stability: "IN_DEVELOPMENT",
+        url: "https://github.com/darlingson/bawo-go",
+    },
+    {
+        title: "Oort Object Storage",
+        tags: ["STORAGE", "GO"],
+        description: "A lightweight, self-hosted object storage server inspired by S3 and MinIO: streaming uploads, SHA256 checksums, bucket management, and PostgreSQL-backed metadata. Built with Go.",
+        stability: "IN_DEVELOPMENT",
+        url: "https://github.com/darlingson/Oort-Object-Storage",
+    },
 ];
 
 const allTech = [...new Set(projects.flatMap((p) => [...p.tags]))].sort();
