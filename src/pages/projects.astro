@@ -72,6 +72,13 @@ const projects = [
         stability: "IN_DEVELOPMENT",
         url: "https://github.com/darlingson/Oort-Object-Storage",
     },
+    {
+        title: "Pluto",
+        tags: ["DATABASE", "RUST"],
+        description: "A terminal UI for PostgreSQL: browse schemas and tables, page through data in a vim-style grid, and run arbitrary SQL — all from the keyboard, without leaving your terminal. Built with Rust and ratatui.",
+        stability: "IN_DEVELOPMENT",
+        url: "https://github.com/darlingson/pluto",
+    },
 ];
 
 const allTech = [...new Set(projects.flatMap((p) => [...p.tags]))].sort();
